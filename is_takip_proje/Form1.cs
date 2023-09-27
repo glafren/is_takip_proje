@@ -50,5 +50,11 @@ namespace is_takip_proje
             Formlar.FrmYeniGorev frm5 = new Formlar.FrmYeniGorev();
             frm5.Show();
         }
+
+        private void BtnGorevDetay_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Formlar.FrmGorevDetay frm6 = new Formlar.FrmGorevDetay();
+            frm6.Show();
+        }
     }
 }
