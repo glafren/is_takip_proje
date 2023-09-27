@@ -16,33 +16,49 @@ namespace is_takip_proje
         {
             InitializeComponent();
         }
-
+        Formlar.FrmDepartmanlar frm;
         private void BtnDepartmanListesi_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            Formlar.FrmDepartmanlar frm = new Formlar.FrmDepartmanlar();
-            frm.MdiParent = this;
-            frm.Show();
+            if (frm == null || frm.IsDisposed)
+            {
+                frm = new Formlar.FrmDepartmanlar();
+                frm.MdiParent = this;
+                frm.Show();
+            }
         }
 
+        Formlar.FrmPersoneller frm2;
         private void BtnPersonelListesi_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            Formlar.FrmPersoneller frm2 = new Formlar.FrmPersoneller();
-            frm2.MdiParent = this;
-            frm2.Show();
+            if (frm2 == null || frm2.IsDisposed)
+            {
+                frm2 = new Formlar.FrmPersoneller();
+                frm2.MdiParent = this;
+                frm2.Show();
+            }
         }
 
+        Formlar.FrmPersonelIstatistik frm3;
         private void BtnPersonelIsatistik_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            Formlar.FrmPersonelIstatistik frm3 = new Formlar.FrmPersonelIstatistik();
-            frm3.MdiParent = this;
-            frm3.Show();
+            if (frm3 == null || frm3.IsDisposed)
+            {
+                frm3 = new Formlar.FrmPersonelIstatistik();
+                frm3.MdiParent = this;
+                frm3.Show();
+            }
         }
 
+        Formlar.FrmGorevListesi frm4;
         private void BtnGorevListesi_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            Formlar.FrmGorevListesi frm4 = new Formlar.FrmGorevListesi();
-            frm4.MdiParent = this;
-            frm4.Show();
+            if (frm4 == null || frm4.IsDisposed)
+            {
+                frm4 = new Formlar.FrmGorevListesi();
+                frm4.MdiParent = this;
+                frm4.Show();
+            }
+
         }
 
         private void BtnYeniGorev_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -55,6 +71,16 @@ namespace is_takip_proje
         {
             Formlar.FrmGorevDetay frm6 = new Formlar.FrmGorevDetay();
             frm6.Show();
+        }
+        Formlar.FrmAnaForm anaform;
+        private void BtnAnaForm_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if (anaform == null || anaform.IsDisposed)
+            {
+                anaform = new Formlar.FrmAnaForm();
+                anaform.MdiParent = this;
+                anaform.Show();
+            }
         }
     }
 }
