@@ -13,6 +13,16 @@
           <Property Name="Kullanici" Type="nvarchar" MaxLength="10" />
           <Property Name="Sifre" Type="nvarchar" MaxLength="10" />
         </EntityType>
+        <EntityType Name="TblCagriDetay">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Cagri" Type="int" />
+          <Property Name="Aciklama" Type="nvarchar" MaxLength="250" />
+          <Property Name="Tarih" Type="date" />
+          <Property Name="Saat" Type="char" MaxLength="5" />
+        </EntityType>
         <EntityType Name="TblCagrilar">
           <Key>
             <PropertyRef Name="ID" />
@@ -79,6 +89,18 @@
           <Property Name="Departman" Type="int" />
           <Property Name="Durum" Type="bit" />
         </EntityType>
+        <Association Name="FK_TblCagriDetay_TblCagrilar">
+          <End Role="TblCagrilar" Type="Self.TblCagrilar" Multiplicity="0..1" />
+          <End Role="TblCagriDetay" Type="Self.TblCagriDetay" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblCagrilar">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TblCagriDetay">
+              <PropertyRef Name="Cagri" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_TblCagrilar_TblFirmalar">
           <End Role="TblFirmalar" Type="Self.TblFirmalar" Multiplicity="0..1" />
           <End Role="TblCagrilar" Type="Self.TblCagrilar" Multiplicity="*" />
@@ -141,12 +163,17 @@
         </Association>
         <EntityContainer Name="DbIsTakipModelStoreContainer">
           <EntitySet Name="TblAdmin" EntityType="Self.TblAdmin" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TblCagriDetay" EntityType="Self.TblCagriDetay" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TblCagrilar" EntityType="Self.TblCagrilar" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TblDepartmanlar" EntityType="Self.TblDepartmanlar" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TblFirmalar" EntityType="Self.TblFirmalar" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TblGorevDetaylar" EntityType="Self.TblGorevDetaylar" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TblGorevler" EntityType="Self.TblGorevler" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TblPersonel" EntityType="Self.TblPersonel" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_TblCagriDetay_TblCagrilar" Association="Self.FK_TblCagriDetay_TblCagrilar">
+            <End Role="TblCagrilar" EntitySet="TblCagrilar" />
+            <End Role="TblCagriDetay" EntitySet="TblCagriDetay" />
+          </AssociationSet>
           <AssociationSet Name="FK_TblCagrilar_TblFirmalar" Association="Self.FK_TblCagrilar_TblFirmalar">
             <End Role="TblFirmalar" EntitySet="TblFirmalar" />
             <End Role="TblCagrilar" EntitySet="TblCagrilar" />
@@ -320,6 +347,11 @@
             <End Role="TblFirmalar" EntitySet="TblFirmalar" />
             <End Role="TblCagrilar" EntitySet="TblCagrilar" />
           </AssociationSet>
+          <EntitySet Name="TblCagriDetay" EntityType="DbIsTakipModel.TblCagriDetay" />
+          <AssociationSet Name="FK_TblCagriDetay_TblCagrilar" Association="DbIsTakipModel.FK_TblCagriDetay_TblCagrilar">
+            <End Role="TblCagrilar" EntitySet="TblCagrilar" />
+            <End Role="TblCagriDetay" EntitySet="TblCagriDetay" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="TblCagrilar">
           <Key>
@@ -332,6 +364,7 @@
           <Property Name="Tarih" Type="DateTime" Precision="0" />
           <NavigationProperty Name="TblFirmalar" Relationship="DbIsTakipModel.FK_TblCagrilar_TblFirmalar" FromRole="TblCagrilar" ToRole="TblFirmalar" />
           <Property Name="Durum" Type="Boolean" />
+          <NavigationProperty Name="TblCagriDetay" Relationship="DbIsTakipModel.FK_TblCagriDetay_TblCagrilar" FromRole="TblCagrilar" ToRole="TblCagriDetay" />
         </EntityType>
         <Association Name="FK_TblCagrilar_TblFirmalar">
           <End Type="DbIsTakipModel.TblFirmalar" Role="TblFirmalar" Multiplicity="0..1" />
@@ -342,6 +375,29 @@
             </Principal>
             <Dependent Role="TblCagrilar">
               <PropertyRef Name="CagriFirma" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="TblCagriDetay">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Cagri" Type="Int32" />
+          <Property Name="Aciklama" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Tarih" Type="DateTime" Precision="0" />
+          <Property Name="Saat" Type="String" MaxLength="5" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="TblCagrilar" Relationship="DbIsTakipModel.FK_TblCagriDetay_TblCagrilar" FromRole="TblCagriDetay" ToRole="TblCagrilar" />
+        </EntityType>
+        <Association Name="FK_TblCagriDetay_TblCagrilar">
+          <End Type="DbIsTakipModel.TblCagrilar" Role="TblCagrilar" Multiplicity="0..1" />
+          <End Type="DbIsTakipModel.TblCagriDetay" Role="TblCagriDetay" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblCagrilar">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TblCagriDetay">
+              <PropertyRef Name="Cagri" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -428,6 +484,17 @@
                 <ScalarProperty Name="Aciklama" ColumnName="Aciklama" />
                 <ScalarProperty Name="Konu" ColumnName="Konu" />
                 <ScalarProperty Name="CagriFirma" ColumnName="CagriFirma" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblCagriDetay">
+            <EntityTypeMapping TypeName="DbIsTakipModel.TblCagriDetay">
+              <MappingFragment StoreEntitySet="TblCagriDetay">
+                <ScalarProperty Name="Saat" ColumnName="Saat" />
+                <ScalarProperty Name="Tarih" ColumnName="Tarih" />
+                <ScalarProperty Name="Aciklama" ColumnName="Aciklama" />
+                <ScalarProperty Name="Cagri" ColumnName="Cagri" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>

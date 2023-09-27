@@ -82,5 +82,25 @@ namespace is_takip_proje
                 anaform.Show();
             }
         }
-    }
+		Formlar.FrmAktifCagrilar aktifcagri;
+		private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+		{
+			if (aktifcagri == null || aktifcagri.IsDisposed)
+			{
+				aktifcagri = new Formlar.FrmAktifCagrilar();
+				aktifcagri.MdiParent = this;
+				aktifcagri.Show();
+			}
+		}
+		Formlar.FrmPasifCagrilar pasifcagri;
+		private void BtnPasifCagrilar_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+		{
+			if (pasifcagri == null || pasifcagri.IsDisposed)
+			{
+				pasifcagri = new Formlar.FrmPasifCagrilar();
+				pasifcagri.MdiParent = this;
+				pasifcagri.Show();
+			}
+		}
+	}
 }

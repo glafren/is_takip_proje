@@ -88,6 +88,9 @@
     <Compile Include="Entity\TblAdmin.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Entity\TblCagriDetay.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Entity\TblCagrilar.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -111,6 +114,12 @@
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formlar\FrmAktifCagrilar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formlar\FrmAktifCagrilar.Designer.cs">
+      <DependentUpon>FrmAktifCagrilar.cs</DependentUpon>
     </Compile>
     <Compile Include="Formlar\FrmAnaForm.cs">
       <SubType>Form</SubType>
@@ -136,6 +145,12 @@
     <Compile Include="Formlar\FrmGorevListesi.Designer.cs">
       <DependentUpon>FrmGorevListesi.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formlar\FrmPasifCagrilar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formlar\FrmPasifCagrilar.Designer.cs">
+      <DependentUpon>FrmPasifCagrilar.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formlar\FrmPersonelIstatistik.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -159,6 +174,9 @@
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Formlar\FrmAktifCagrilar.resx">
+      <DependentUpon>FrmAktifCagrilar.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formlar\FrmAnaForm.resx">
       <DependentUpon>FrmAnaForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -170,6 +188,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formlar\FrmGorevListesi.resx">
       <DependentUpon>FrmGorevListesi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formlar\FrmPasifCagrilar.resx">
+      <DependentUpon>FrmPasifCagrilar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formlar\FrmPersonelIstatistik.resx">
       <DependentUpon>FrmPersonelIstatistik.cs</DependentUpon>
