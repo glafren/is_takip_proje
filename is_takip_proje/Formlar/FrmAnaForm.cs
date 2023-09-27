@@ -42,6 +42,31 @@ namespace is_takip_proje.Formlar
                                        }).Where(x => x.Tarih == bugun).ToList();
             gridView2.Columns["Tarih"].Visible = false;
 
+
+            gridControl3.DataSource = (from x in db.TblCagrilar
+                                       select new
+                                       {
+                                           x.TblFirmalar.Ad,
+                                           x.Konu,
+                                           x.Tarih,
+                                           x.Durum
+                                       }).Where(x => x.Durum == true).ToList();
+            gridView3.Columns["Durum"].Visible = false;
+
+
+            gridControl4.DataSource = (from x in db.TblFirmalar
+                                       select new
+                                       {
+                                           x.Ad,
+                                           x.Telefon,
+                                           x.Mail
+                                       }).ToList();
+
+            int aktifCagri = db.TblCagrilar.Where(x => x.Durum == true).Count();
+            int pasifCagri = db.TblCagrilar.Where(x => x.Durum == false).Count();
+
+            chartControl1.Series["Series 1"].Points.AddPoint("Aktif Çağrılar", aktifCagri);
+            chartControl1.Series["Series 1"].Points.AddPoint("Pasif Çağrılar", pasifCagri);
         }
     }
 }
