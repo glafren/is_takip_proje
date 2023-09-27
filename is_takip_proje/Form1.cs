@@ -44,5 +44,11 @@ namespace is_takip_proje
             frm4.MdiParent = this;
             frm4.Show();
         }
+
+        private void BtnYeniGorev_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Formlar.FrmYeniGorev frm5 = new Formlar.FrmYeniGorev();
+            frm5.Show();
+        }
     }
 }
