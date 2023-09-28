@@ -16,7 +16,7 @@ namespace is_takip_proje
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new PersonelGorevFormlari.FrmPersonelFormu());
+            Application.Run(new Login.FrmLogin());
         }
     }
 }

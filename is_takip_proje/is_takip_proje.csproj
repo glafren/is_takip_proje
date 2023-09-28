@@ -127,6 +127,12 @@
     <Compile Include="Formlar\FrmAnaForm.Designer.cs">
       <DependentUpon>FrmAnaForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formlar\FrmCagriAtama.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formlar\FrmCagriAtama.Designer.cs">
+      <DependentUpon>FrmCagriAtama.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formlar\FrmDepartmanlar.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -169,11 +175,35 @@
     <Compile Include="Formlar\FrmYeniGorev.Designer.cs">
       <DependentUpon>FrmYeniGorev.cs</DependentUpon>
     </Compile>
+    <Compile Include="Login\FrmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Login\FrmLogin.Designer.cs">
+      <DependentUpon>FrmLogin.cs</DependentUpon>
+    </Compile>
     <Compile Include="PersonelGorevFormlari\FrmAktifGorevler.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="PersonelGorevFormlari\FrmAktifGorevler.Designer.cs">
       <DependentUpon>FrmAktifGorevler.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PersonelGorevFormlari\FrmCagriDetayGirisi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PersonelGorevFormlari\FrmCagriDetayGirisi.Designer.cs">
+      <DependentUpon>FrmCagriDetayGirisi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PersonelGorevFormlari\FrmCagriListesi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PersonelGorevFormlari\FrmCagriListesi.Designer.cs">
+      <DependentUpon>FrmCagriListesi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PersonelGorevFormlari\FrmPasifGorevler.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PersonelGorevFormlari\FrmPasifGorevler.Designer.cs">
+      <DependentUpon>FrmPasifGorevler.cs</DependentUpon>
     </Compile>
     <Compile Include="PersonelGorevFormlari\FrmPersonelFormu.cs">
       <SubType>Form</SubType>
@@ -191,6 +221,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Formlar\FrmAnaForm.resx">
       <DependentUpon>FrmAnaForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formlar\FrmCagriAtama.resx">
+      <DependentUpon>FrmCagriAtama.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formlar\FrmDepartmanlar.resx">
       <DependentUpon>FrmDepartmanlar.cs</DependentUpon>
@@ -213,8 +246,20 @@
     <EmbeddedResource Include="Formlar\FrmYeniGorev.resx">
       <DependentUpon>FrmYeniGorev.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Login\FrmLogin.resx">
+      <DependentUpon>FrmLogin.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="PersonelGorevFormlari\FrmAktifGorevler.resx">
       <DependentUpon>FrmAktifGorevler.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PersonelGorevFormlari\FrmCagriDetayGirisi.resx">
+      <DependentUpon>FrmCagriDetayGirisi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PersonelGorevFormlari\FrmCagriListesi.resx">
+      <DependentUpon>FrmCagriListesi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PersonelGorevFormlari\FrmPasifGorevler.resx">
+      <DependentUpon>FrmPasifGorevler.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PersonelGorevFormlari\FrmPersonelFormu.resx">
       <DependentUpon>FrmPersonelFormu.cs</DependentUpon>

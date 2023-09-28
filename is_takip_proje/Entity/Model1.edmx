@@ -33,6 +33,7 @@
           <Property Name="Aciklama" Type="nvarchar(max)" />
           <Property Name="Durum" Type="bit" />
           <Property Name="Tarih" Type="date" />
+          <Property Name="CagriPersonel" Type="int" />
         </EntityType>
         <EntityType Name="TblDepartmanlar">
           <Key>
@@ -88,6 +89,9 @@
           <Property Name="Gorsel" Type="nvarchar" MaxLength="100" />
           <Property Name="Departman" Type="int" />
           <Property Name="Durum" Type="bit" />
+          <Property Name="Rol" Type="char" MaxLength="1" />
+          <Property Name="Sifre" Type="nvarchar" MaxLength="20" />
+          <Property Name="KullaniciAdi" Type="nvarchar" MaxLength="20" />
         </EntityType>
         <Association Name="FK_TblCagriDetay_TblCagrilar">
           <End Role="TblCagrilar" Type="Self.TblCagrilar" Multiplicity="0..1" />
@@ -110,6 +114,18 @@
             </Principal>
             <Dependent Role="TblCagrilar">
               <PropertyRef Name="CagriFirma" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TblCagrilar_TblPersonel">
+          <End Role="TblPersonel" Type="Self.TblPersonel" Multiplicity="0..1" />
+          <End Role="TblCagrilar" Type="Self.TblCagrilar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblPersonel">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TblCagrilar">
+              <PropertyRef Name="CagriPersonel" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -176,6 +192,10 @@
           </AssociationSet>
           <AssociationSet Name="FK_TblCagrilar_TblFirmalar" Association="Self.FK_TblCagrilar_TblFirmalar">
             <End Role="TblFirmalar" EntitySet="TblFirmalar" />
+            <End Role="TblCagrilar" EntitySet="TblCagrilar" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TblCagrilar_TblPersonel" Association="Self.FK_TblCagrilar_TblPersonel">
+            <End Role="TblPersonel" EntitySet="TblPersonel" />
             <End Role="TblCagrilar" EntitySet="TblCagrilar" />
           </AssociationSet>
           <AssociationSet Name="FK_TblGorevDetaylar_TblGorevler" Association="Self.FK_TblGorevDetaylar_TblGorevler">
@@ -270,6 +290,10 @@
           <NavigationProperty Name="TblGorevler" Relationship="Self.FK_TblGorevler_TblPersonel" FromRole="TblPersonel" ToRole="TblGorevler" />
           <NavigationProperty Name="TblGorevler1" Relationship="Self.FK_TblGorevler_TblPersonel1" FromRole="TblPersonel" ToRole="TblGorevler" />
           <Property Name="Durum" Type="Boolean" />
+          <Property Name="Rol" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="TblCagrilar" Relationship="DbIsTakipModel.FK_TblCagrilar_TblPersonel" FromRole="TblPersonel" ToRole="TblCagrilar" />
+          <Property Name="Sifre" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="KullaniciAdi" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
         </EntityType>
         <Association Name="FK_TblPersonel_TblDepartmanlar">
           <End Role="TblDepartmanlar" Type="Self.TblDepartmanlar" Multiplicity="0..1" />
@@ -352,6 +376,10 @@
             <End Role="TblCagrilar" EntitySet="TblCagrilar" />
             <End Role="TblCagriDetay" EntitySet="TblCagriDetay" />
           </AssociationSet>
+          <AssociationSet Name="FK_TblCagrilar_TblPersonel" Association="DbIsTakipModel.FK_TblCagrilar_TblPersonel">
+            <End Role="TblPersonel" EntitySet="TblPersonel" />
+            <End Role="TblCagrilar" EntitySet="TblCagrilar" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="TblCagrilar">
           <Key>
@@ -365,6 +393,8 @@
           <NavigationProperty Name="TblFirmalar" Relationship="DbIsTakipModel.FK_TblCagrilar_TblFirmalar" FromRole="TblCagrilar" ToRole="TblFirmalar" />
           <Property Name="Durum" Type="Boolean" />
           <NavigationProperty Name="TblCagriDetay" Relationship="DbIsTakipModel.FK_TblCagriDetay_TblCagrilar" FromRole="TblCagrilar" ToRole="TblCagriDetay" />
+          <Property Name="CagriPersonel" Type="Int32" />
+          <NavigationProperty Name="TblPersonel" Relationship="DbIsTakipModel.FK_TblCagrilar_TblPersonel" FromRole="TblCagrilar" ToRole="TblPersonel" />
         </EntityType>
         <Association Name="FK_TblCagrilar_TblFirmalar">
           <End Type="DbIsTakipModel.TblFirmalar" Role="TblFirmalar" Multiplicity="0..1" />
@@ -398,6 +428,18 @@
             </Principal>
             <Dependent Role="TblCagriDetay">
               <PropertyRef Name="Cagri" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TblCagrilar_TblPersonel">
+          <End Type="DbIsTakipModel.TblPersonel" Role="TblPersonel" Multiplicity="0..1" />
+          <End Type="DbIsTakipModel.TblCagrilar" Role="TblCagrilar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblPersonel">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="TblCagrilar">
+              <PropertyRef Name="CagriPersonel" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -465,6 +507,9 @@
           <EntitySetMapping Name="TblPersonel">
             <EntityTypeMapping TypeName="DbIsTakipModel.TblPersonel">
               <MappingFragment StoreEntitySet="TblPersonel">
+                <ScalarProperty Name="KullaniciAdi" ColumnName="KullaniciAdi" />
+                <ScalarProperty Name="Sifre" ColumnName="Sifre" />
+                <ScalarProperty Name="Rol" ColumnName="Rol" />
                 <ScalarProperty Name="Durum" ColumnName="Durum" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Ad" ColumnName="Ad" />
@@ -479,6 +524,7 @@
           <EntitySetMapping Name="TblCagrilar">
             <EntityTypeMapping TypeName="DbIsTakipModel.TblCagrilar">
               <MappingFragment StoreEntitySet="TblCagrilar">
+                <ScalarProperty Name="CagriPersonel" ColumnName="CagriPersonel" />
                 <ScalarProperty Name="Durum" ColumnName="Durum" />
                 <ScalarProperty Name="Tarih" ColumnName="Tarih" />
                 <ScalarProperty Name="Aciklama" ColumnName="Aciklama" />

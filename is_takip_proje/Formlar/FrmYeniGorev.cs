@@ -51,7 +51,7 @@ namespace is_takip_proje.Formlar
             t.Aciklama = TxtAciklama.Text;
             t.Durum = true;
             t.Tarih = DateTime.Parse(TxtTarih.Text);
-            t.GorevVeren = int.Parse(TxtGorevVeren.Text);
+            t.GorevVeren = 1;
             t.GorevAlan = int.Parse(lookUpEdit1.EditValue.ToString());
 
             db.TblGorevler.Add(t);

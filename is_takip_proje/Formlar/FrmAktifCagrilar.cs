@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using is_takip_proje.Entity;
+using is_takip_proje.PersonelGorevFormlari;
 
 namespace is_takip_proje.Formlar
 {
@@ -28,10 +29,18 @@ namespace is_takip_proje.Formlar
 								x.TblFirmalar.Telefon,
 								x.Konu,
 								x.Aciklama,
+								Personel = x.TblPersonel.Ad,
 								x.Durum
 							}).Where(x=> x.Durum == true).ToList();
 			gridControl1.DataSource = degerler;
 			gridView1.Columns["Durum"].Visible = false;
+		}
+
+		private void gridView1_DoubleClick(object sender, EventArgs e)
+		{
+			FrmCagriAtama fr = new FrmCagriAtama();
+			fr.id = int.Parse(gridView1.GetFocusedRowCellValue("ID").ToString());
+			fr.Show();
 		}
 	}
 }
